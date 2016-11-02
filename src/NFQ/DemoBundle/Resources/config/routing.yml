@@ -1,0 +1,3 @@
+nfq_demo_homepage:
+    path:     /
+    defaults: { _controller: NFQDemoBundle:Default:index }

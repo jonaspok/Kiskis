@@ -1,0 +1,14 @@
+services:
+#    nfq_demo.example:
+#        class: NFQ\DemoBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+  app.car:
+    class: NFQ\DemoBundle\Service\Car
+    factory: ["@app.car_factory", create]
+  app.car_factory:
+    class: NFQ\DemoBundle\Service\CarFactory
+    arguments: ["@event_dispatcher"]
+  app.event_listener:
+    class: NFQ\DemoBundle\Event\EventListener
+    tags:
+    - { name: kernel.event_listener, event: app.pre_create, method: makeChanges }
